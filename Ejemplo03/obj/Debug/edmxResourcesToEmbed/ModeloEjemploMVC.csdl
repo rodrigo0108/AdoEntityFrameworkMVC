@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EjemploMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Proveedor">
+    <Key>
+      <PropertyRef Name="IdProveedor" />
+    </Key>
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ruc" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="Credito" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="EjemploMVCEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+    <FunctionImport Name="usp_listaDatos_metodo" ReturnType="Collection(EjemploMVCModel.usp_listaDatos_Result)" />
+  </EntityContainer>
+  <ComplexType Name="usp_listaDatos_Result">
+    <Property Type="Int32" Name="idproveedor" Nullable="false" />
+    <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ruc" Nullable="true" MaxLength="12" />
+    <Property Type="Int32" Name="credito" Nullable="true" />
+  </ComplexType>
+</Schema>
